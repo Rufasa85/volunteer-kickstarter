@@ -2,7 +2,8 @@ const Volunteer = require("./Volunteer");
 const Opportunity = require("./Opportunity");
 
 Volunteer.hasMany(Opportunity,{
-    as:"Creator"
+    as:"Creator",
+    foreignKey:"CreatorId"
 });
 Opportunity.belongsTo(Volunteer, {
     as:"Creator"
