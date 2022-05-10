@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    {{{body}}}
+    <header>
+        <a href="/">Home</a>
+        {{#if loggedIn}}
+        <a href="/profile"><button> Profile</button></a>
+        <button id="logoutBtn">Logout</button>
+        {{else}}
+        <a href="/login"><button>Login</button></a>
+
+        {{/if}}
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+    <footer></footer>
+    <script src="/js/main.js"></script>
 </body>
 </html>

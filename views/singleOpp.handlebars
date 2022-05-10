@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+<h2>hosted by {{Creator.username}}</h2>
+<p>{{description}}</p>
+<h3>Attending</h3>
+<ul>
+    {{#each Attendee}}
+    {{!-- TODO: allow creator to remove users --}}
+        <li>{{username}}</li>
+    {{/each}}
+</ul>
+<h3>Date: {{date}}</h3>
+{{#if loggedIn}}
+<h4>{{distance}} miles away!</h4>
+{{/if}}
+<p>we need {{volunteersNeeded}} volunteers</p>
+<p>{{slotsLeft}} slot(s) left!</p>
+{{!-- TODO: see attend notes in home.handlebars --}}
+{{#if loggedIn}}
+{{!-- TODO: Button dont work --}}
+<button>Attend</button>
+{{/if}}

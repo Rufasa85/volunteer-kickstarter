@@ -53,7 +53,7 @@ router.post("/login",(req,res)=>{
             req.session.user = {
                 id:foundUser.id,
                 username:foundUser.username,
-                lat:req.body.lattitude,
+                lat:req.body.latitude,
                 long:req.body.longitude
             }
             return res.json(foundUser)

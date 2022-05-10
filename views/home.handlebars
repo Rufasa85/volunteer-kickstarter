@@ -1,12 +1,21 @@
 <h1>Homepage!</h1>
+{{!-- TODO: add filters and sorting buttons --}}
 {{#each opps }}
     <h2>{{title}}</h2>
     <h3>Date: {{date}}</h3>
     {{#if ../loggedIn}}
     <h4>{{distance}} miles away!</h4>
     {{/if}}
-    <button>Details</button>
-    <button>Attend</button>
+    <p>we need {{volunteersNeeded}} volunteers</p>
+    <p>{{slotsLeft}} slot(s) left!</p>
+    <a href="/opps/{{id}}"><button>Details</button></a>
+    {{#if ../loggedIn}}
+    {{!-- TODO: if already attending, switch to diff button --}}
+    {{!-- TODO: if eventFull, dont show button --}}
+    <button data-userid={{../userid}} data-oppid={{id}} class="attendBtn">Attend</button>
+    {{/if}}
     <hr>
 
 {{/each}}
+
+<script src="/js/home.js"></script>

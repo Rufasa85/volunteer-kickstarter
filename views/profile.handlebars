@@ -1,0 +1,32 @@
+<h1>Welcome, {{username}}</h1>
+<h2>New Event</h2>
+<form action="" id="newEvent">
+    <input type="text" name="" id="title">
+    <textarea name="" id="description" cols="30" rows="10"></textarea>
+    <input type="date" name="" id="date">
+    <input type="number" name="" id="volunteersNeeded">
+    <button>Submit</button>
+</form>
+<h2>Hosting</h2>
+{{#each Creator}}
+      <h2>{{title}}</h2>
+    <h3>Date: {{date}}</h3>
+    <p>we need {{volunteersNeeded}} volunteers</p>
+    <p>{{slotsLeft}} slot(s) left!</p>
+    <a href="/opps/{{id}}"><button>Details</button></a>
+    <button>Delete</button>
+    <hr>
+{{/each}}
+<h2>Attending</h2>
+{{#each Attendee}}
+      <h2>{{title}}</h2>
+    <h3>Date: {{date}}</h3>
+     <h4>{{distance}} miles away!</h4>
+    <p>we need {{volunteersNeeded}} volunteers</p>
+    <p>{{slotsLeft}} slot(s) left!</p>
+    <a href="/opps/{{id}}"><button>Details</button></a>
+    <button>Cancel</button>
+    <hr>
+{{/each}}
+
+<script src="/js/profile.js"></script>

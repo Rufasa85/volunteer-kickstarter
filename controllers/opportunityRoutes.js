@@ -38,7 +38,9 @@ router.post("/",(req,res)=>{
     }
     Opportunity.create({
         ...req.body,
-        CreatorId:req.session.user?.id
+        CreatorId:req.session.user?.id,
+        lattitude:req.session.user.lat,
+        longitude:req.session.user.long
     }).then(newOpp=>{
         res.json(newOpp)
     }).catch(err=>{
