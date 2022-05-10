@@ -34,10 +34,6 @@ router.get("/:id",(req,res)=>{
 
 router.post("/",(req,res)=>{
     Volunteer.create(req.body).then(newUser=>{
-        req.session.user = {
-            id:foundUser.id,
-            username:newUser.username
-        }
         res.json(newUser)
     }).catch(err=>{
         console.log(err)
@@ -56,7 +52,9 @@ router.post("/login",(req,res)=>{
         if(bcrypt.compareSync(req.body.password,foundUser.password)){
             req.session.user = {
                 id:foundUser.id,
-                username:foundUser.username
+                username:foundUser.username,
+                lat:req.body.lattitude,
+                long:req.body.longitude
             }
             return res.json(foundUser)
         }

@@ -1,0 +1,12 @@
+<h1>Homepage!</h1>
+{{#each opps }}
+    <h2>{{title}}</h2>
+    <h3>Date: {{date}}</h3>
+    {{#if ../loggedIn}}
+    <h4>{{distance}} miles away!</h4>
+    {{/if}}
+    <button>Details</button>
+    <button>Attend</button>
+    <hr>
+
+{{/each}}

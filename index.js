@@ -15,7 +15,9 @@ const { Volunteer,Opportunity} = require('./models');
 
 const sess = {
     secret: process.env.SESSION_SECRET,
-    cookie: {},
+    cookie: {
+        maxAge:1000*60*60*2
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -29,11 +31,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
-// const hbs = exphbs.create({});
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+const hbs = exphbs.create({});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use('/',allRoutes);
 
