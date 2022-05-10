@@ -11,7 +11,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3000;
 // Requiring our models for syncing
-const { Volunteer} = require('./models');
+const { Volunteer,Opportunity} = require('./models');
 
 const sess = {
     secret: process.env.SESSION_SECRET,
@@ -38,7 +38,17 @@ app.use(express.json());
 // app.use('/',allRoutes);
 
 app.get("/",(req,res)=>{
-    res.send("connected!!@!!!!")
+    Opportunity.findAll({
+        include:[{
+            model:Volunteer,
+            as:"Creator"
+        },{
+            model:Volunteer,
+            as:"Attendee"
+        }]
+    }).then(opps=>{
+        res.json(opps)
+    })
 })
 
 sequelize.sync({ force: false }).then(function() {

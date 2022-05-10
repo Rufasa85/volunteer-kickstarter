@@ -23,7 +23,8 @@ const opps = [
     lattitude: 0,
     longitude: 0,
     date: new Date(),
-    volunteersNeeded: 2
+    volunteersNeeded: 2,
+    CreatorId:1
   },
   {
     title: "hang out with cats",
@@ -31,7 +32,8 @@ const opps = [
     lattitude: 47.6101,
     longitude: -122.16,
     date: new Date("06/01/2022"),
-    volunteersNeeded: 20
+    volunteersNeeded: 20,
+    CreatorId:1
   }
 ];
 
@@ -40,8 +42,12 @@ const seedIt = async () => {
   await Volunteer.bulkCreate(volunteers, {
     individualHooks: true
   });
-  await Opportunity.bulkCreate(opps);
+  const createdOpps = await Opportunity.bulkCreate(opps);
+  console.log(createdOpps)
+  await createdOpps[1].addAttendee(1);
+  await createdOpps[1].addAttendee(2);
   process.exit(0);
+
 };
 
 seedIt();
